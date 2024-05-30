@@ -1,4 +1,4 @@
-package completedSCFS;
+package CompletedSCFS;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package completedSCFS;
+package CompletedSCFS;
 
 class Process {
 	public int turnaroundTime;
