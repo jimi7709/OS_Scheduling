@@ -1,18 +1,8 @@
-package completedSCFS;
+package completedPriorityNonPreEmptive;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-
-
-
-
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 
 public class Main {
 	public static void main(String[] args) {
@@ -24,15 +14,16 @@ public class Main {
 		int numProcesses = scanner.nextInt();
 
 		for (int i = 0; i < numProcesses; i++) {
-			System.out.println("Enter Process ID, Arrival Time, Burst Time for process " + (i + 1) + ":");
+			System.out.println("Enter Process ID, Arrival Time, Burst Time,Priority for process " + (i + 1) + ":");
 			int processID = scanner.nextInt();
 			int arriveTime = scanner.nextInt();
 			int burstTime = scanner.nextInt();
+			int priority = scanner.nextInt();
 			exeTime += burstTime;
-			jobList.add(new Process(processID, arriveTime, burstTime));
+			jobList.add(new Process(processID, arriveTime, burstTime, priority));
 		}
 
-		Scfs.run(jobList);
+		Priority.run(jobList);
 
 		System.out.println("Scheduling Results:");
 		System.out.println("총 cpu 실행시간(execution time):" + exeTime);
@@ -48,3 +39,4 @@ public class Main {
 		scanner.close();
 	}
 }
+

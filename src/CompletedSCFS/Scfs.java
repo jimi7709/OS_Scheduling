@@ -1,4 +1,4 @@
-package CompletedSCFS;
+package completedSCFS;
 
 import java.util.Collections;
 import java.util.Comparator;
