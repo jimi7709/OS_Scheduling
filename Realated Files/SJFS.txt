@@ -1,0 +1,93 @@
+package SJFS;
+
+import java.util.*;
+
+class Process {
+    int processnum;
+    int burstTime;
+    int arrivetime;
+    int priority;
+    int timeslice;
+
+    public Process(int processnum, int burstTime, int arrivetime) {
+        this.processnum = processnum;
+        this.burstTime = burstTime;
+        this.arrivetime = arrivetime;
+    }
+}
+
+class ShortestJobFirst {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Process의 개수 입력: ");
+        int n = scanner.nextInt();
+
+        List<Process> processes = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            System.out.print("Process " + (i + 1) + "의 BurstTime, Arrivetime을 입력하시오: ");
+            int burstTime = scanner.nextInt();
+            int arrivetime = scanner.nextInt();
+            processes.add(new Process(i + 1, burstTime, arrivetime));
+        }
+
+        Collections.sort(processes, Comparator.comparingInt(p -> p.arrivetime));
+
+        int currentTime = 0;
+        int[] turnaroundTime = new int[n];
+        int[] waitingTime = new int[n];
+        int[] responseTime = new int[n];
+        boolean[] isStarted = new boolean[n];
+
+        List<Integer> ganttChart = new ArrayList<>();
+        int completed = 0;
+        while (completed < n) {
+            int shortest = -1;
+            int minBurstTime = Integer.MAX_VALUE;
+            for (int i = 0; i < n; i++) {
+                if (processes.get(i).arrivetime <= currentTime && !isStarted[i] && processes.get(i).burstTime < minBurstTime) {
+                    minBurstTime = processes.get(i).burstTime;
+                    shortest = i;
+                }
+            }
+            if (shortest == -1) {
+                currentTime++;
+                continue;
+            }
+
+            Process process = processes.get(shortest);
+            if (!isStarted[shortest]) {
+                responseTime[shortest] = currentTime - process.arrivetime;
+                isStarted[shortest] = true;
+            }
+
+            ganttChart.add(process.processnum);
+            currentTime += process.burstTime;
+
+            turnaroundTime[shortest] = currentTime - process.arrivetime;
+            waitingTime[shortest] = turnaroundTime[shortest] - process.burstTime;
+
+            completed++;
+        }
+
+        System.out.println("gantchart:");
+        for (int i = 0; i < ganttChart.size(); i++) {
+            System.out.print(ganttChart.get(i) + " ");
+        }
+        System.out.println("\n전체 실행 시간: " + currentTime);
+
+        int totalTurnaroundTime = 0;
+        int totalWaitingTime = 0;
+        int totalResponseTime = 0;
+        for (int i = 0; i < n; i++) {
+            System.out.println("Process " + (i + 1) + " 실행 시간: " + turnaroundTime[i] + ", 대기 시간: " + waitingTime[i] + ", 응답 시간: " + responseTime[i]);
+            totalTurnaroundTime += turnaroundTime[i];
+            totalWaitingTime += waitingTime[i];
+            totalResponseTime += responseTime[i];
+        }
+        double averageWaitingTime = (double) totalWaitingTime / n;
+        System.out.println("평균 대기 시간: " + averageWaitingTime);
+
+        double throughput = (double) n / currentTime;
+        System.out.println("Throughput: " + throughput);
+    }
+}

@@ -1,0 +1,77 @@
+Non emptive priority 
+
+Enter Process ID, Arrival Time, Burst Time,Priority for process 1:
+1 1 3 3
+Enter Process ID, Arrival Time, Burst Time,Priority for process 2:
+2 1 3 2
+Enter Process ID, Arrival Time, Burst Time,Priority for process 3:
+3 1 3 1
+Enter Process ID, Arrival Time, Burst Time,Priority for process 4:
+4 1 3 4
+Scheduling Results:
+총 cpu 실행시간(execution time):12
+ProcessID : 4 CompletionTime : 4 WaitingTime : 0 TurnaroundTime : 3
+ProcessID : 1 CompletionTime : 7 WaitingTime : 3 TurnaroundTime : 6
+ProcessID : 2 CompletionTime : 10 WaitingTime : 6 TurnaroundTime : 9
+ProcessID : 3 CompletionTime : 13 WaitingTime : 9 TurnaroundTime : 12
+
+FCFS,RR,SJF에 대해서 비교
+
+
+FCFS
+Enter the number of processes:
+4
+Enter Process ID, Arrival Time, Burst Time for process 1:
+1 0 5
+Enter Process ID, Arrival Time, Burst Time for process 2:
+2 1 3
+Enter Process ID, Arrival Time, Burst Time for process 3:
+3 2 8
+Enter Process ID, Arrival Time, Burst Time for process 4:
+4 3 6
+Scheduling Results:
+총 cpu 실행시간(execution time):22
+ProcessID : 1 CompletionTime : 5 WaitingTime : 0 TurnaroundTime : 5
+ProcessID : 2 CompletionTime : 8 WaitingTime : 4 TurnaroundTime : 7
+ProcessID : 3 CompletionTime : 16 WaitingTime : 6 TurnaroundTime : 14
+ProcessID : 4 CompletionTime : 22 WaitingTime : 13 TurnaroundTime : 19
+평균 대기시간:5
+
+RR
+Process의 개수를 입력하시오: 4
+Process 1의 BurstTime, ArriveTime을 입력하시오:  5 0
+Process 2의 BurstTime, ArriveTime을 입력하시오: 3 1
+Process 3의 BurstTime, ArriveTime을 입력하시오: 8 2
+Process 4의 BurstTime, ArriveTime을 입력하시오:  6 3
+Timeslice를 입력하시오: 2
+
+=== 결과 ===
+Process 1 turnaroundTime: 9 waitingTime: 4 responseTime: 0
+Process 2 turnaroundTime: 11 waitingTime: 8 responseTime: 3
+Process 3 turnaroundTime: 20 waitingTime: 12 responseTime: 4
+Process 4 turnaroundTime: 17 waitingTime: 11 responseTime: 6
+
+전체 실행 시간: 22
+평균 대기 시간: 8.75
+평균 실행 시간: 14.25
+평균 응답 시간: 3.25
+Throughput: 0.18181818181818182
+간트 차트
+1 1 1 1 2 2 3 3 1 4 4 2 3 3 4 4 3 3 4 4 3 3 
+SJF
+Process의 개수 입력: 4
+Process 1의 BurstTime, Arrivetime을 입력하시오: 5 0
+Process 2의 BurstTime, Arrivetime을 입력하시오: 3 1
+Process 3의 BurstTime, Arrivetime을 입력하시오: 8 2
+Process 4의 BurstTime, Arrivetime을 입력하시오: 6 3
+gantchart:
+1 2 4 3 
+전체 실행 시간: 22
+Process 1 실행 시간: 5, 대기 시간: 0, 응답 시간: 0
+Process 2 실행 시간: 7, 대기 시간: 4, 응답 시간: 4
+Process 3 실행 시간: 20, 대기 시간: 12, 응답 시간: 12
+Process 4 실행 시간: 11, 대기 시간: 5, 응답 시간: 5
+평균 대기 시간: 5.25
+Throughput: 0.18181818181818182
+
+

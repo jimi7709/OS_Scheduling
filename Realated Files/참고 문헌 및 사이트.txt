@@ -1,0 +1,12 @@
+cpu scheduling 을 간트차트로 만들때 참고한 사이트
+1. http://cpuburst.com/
+
+2. https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/5_CPU_Scheduling.html
+
+cpu scheduling 구조도를 만들 때 참고한 사이트
+
+1. https://mermaid.live/
+
+
+
+

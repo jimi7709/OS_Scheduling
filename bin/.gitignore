@@ -1,2 +1,4 @@
 /CompletedSCFS/
 /completedPriorityNonPreEmptive/
+/sentIntegratedSJF/
+/sentIntegratedRoundRobin/
